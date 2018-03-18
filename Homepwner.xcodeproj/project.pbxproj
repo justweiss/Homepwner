@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		77FB14E7205EED22005FF2D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FB14E6205EED22005FF2D5 /* AppDelegate.swift */; };
-		77FB14E9205EED22005FF2D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FB14E8205EED22005FF2D5 /* ViewController.swift */; };
 		77FB14EC205EED22005FF2D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77FB14EA205EED22005FF2D5 /* Main.storyboard */; };
 		77FB14EE205EED22005FF2D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77FB14ED205EED22005FF2D5 /* Assets.xcassets */; };
 		77FB14F1205EED22005FF2D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77FB14EF205EED22005FF2D5 /* LaunchScreen.storyboard */; };
 		77FB14FC205EED23005FF2D5 /* HomepwnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FB14FB205EED23005FF2D5 /* HomepwnerTests.swift */; };
 		77FB1507205EED23005FF2D5 /* HomepwnerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FB1506205EED23005FF2D5 /* HomepwnerUITests.swift */; };
+		77FB1515205EEE01005FF2D5 /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FB1514205EEE01005FF2D5 /* ItemsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +36,6 @@
 /* Begin PBXFileReference section */
 		77FB14E3205EED22005FF2D5 /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77FB14E6205EED22005FF2D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		77FB14E8205EED22005FF2D5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		77FB14EB205EED22005FF2D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		77FB14ED205EED22005FF2D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		77FB14F0205EED22005FF2D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +46,7 @@
 		77FB1502205EED23005FF2D5 /* HomepwnerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomepwnerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		77FB1506205EED23005FF2D5 /* HomepwnerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepwnerUITests.swift; sourceTree = "<group>"; };
 		77FB1508205EED23005FF2D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		77FB1514205EEE01005FF2D5 /* ItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				77FB14E6205EED22005FF2D5 /* AppDelegate.swift */,
-				77FB14E8205EED22005FF2D5 /* ViewController.swift */,
+				77FB1514205EEE01005FF2D5 /* ItemsViewController.swift */,
 				77FB14EA205EED22005FF2D5 /* Main.storyboard */,
 				77FB14ED205EED22005FF2D5 /* Assets.xcassets */,
 				77FB14EF205EED22005FF2D5 /* LaunchScreen.storyboard */,
@@ -259,7 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77FB14E9205EED22005FF2D5 /* ViewController.swift in Sources */,
+				77FB1515205EEE01005FF2D5 /* ItemsViewController.swift in Sources */,
 				77FB14E7205EED22005FF2D5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
