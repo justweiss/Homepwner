@@ -83,6 +83,11 @@
                                         <constraint firstItem="iSP-7g-nq7" firstAttribute="top" secondItem="qfQ-UM-aCr" secondAttribute="topMargin" id="uek-hz-arT"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="iSP-7g-nq7" id="amI-wx-By5"/>
+                                    <outlet property="serialNumberLabel" destination="rWv-a4-kVl" id="iMR-QW-K8t"/>
+                                    <outlet property="valueLabel" destination="sN7-mu-kEz" id="3Sp-Ph-K3z"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
