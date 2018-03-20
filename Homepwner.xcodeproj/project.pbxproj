@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		770B754E205EF3ED0057BA83 /* ItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770B754D205EF3ED0057BA83 /* ItemStore.swift */; };
+		77ED146C2061A20800E59316 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77ED146B2061A20800E59316 /* ItemCell.swift */; };
 		77FB14E7205EED22005FF2D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FB14E6205EED22005FF2D5 /* AppDelegate.swift */; };
 		77FB14EC205EED22005FF2D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77FB14EA205EED22005FF2D5 /* Main.storyboard */; };
 		77FB14EE205EED22005FF2D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77FB14ED205EED22005FF2D5 /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		770B754D205EF3ED0057BA83 /* ItemStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStore.swift; sourceTree = "<group>"; };
+		77ED146B2061A20800E59316 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		77FB14E3205EED22005FF2D5 /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77FB14E6205EED22005FF2D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77FB14EB205EED22005FF2D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				77FB1514205EEE01005FF2D5 /* ItemsViewController.swift */,
 				77FB1516205EEF30005FF2D5 /* Item.swift */,
 				770B754D205EF3ED0057BA83 /* ItemStore.swift */,
+				77ED146B2061A20800E59316 /* ItemCell.swift */,
 				77FB14EA205EED22005FF2D5 /* Main.storyboard */,
 				77FB14ED205EED22005FF2D5 /* Assets.xcassets */,
 				77FB14EF205EED22005FF2D5 /* LaunchScreen.storyboard */,
@@ -269,6 +272,7 @@
 				77FB1517205EEF30005FF2D5 /* Item.swift in Sources */,
 				770B754E205EF3ED0057BA83 /* ItemStore.swift in Sources */,
 				77FB14E7205EED22005FF2D5 /* AppDelegate.swift in Sources */,
+				77ED146C2061A20800E59316 /* ItemCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
