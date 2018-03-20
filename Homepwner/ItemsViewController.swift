@@ -12,13 +12,6 @@ class ItemsViewController: UITableViewController {
     var itemStore: ItemStore!
     
     @IBAction func addNewItem(_ sender: UIButton) {
-        //Make a new index path for the 0th section, last row
-        //let lastRow = tableView.numberOfRows(inSection: 0)
-        //let indexPath = IndexPath(row: lastRow, section: 0)
-        
-        //Insert this new row into the table
-        //tableView.insertRows(at: [indexPath], with: .automatic)
-        
         //Create a new item and adds it to the store
         let newItem = itemStore.createItem()
         
@@ -53,9 +46,6 @@ class ItemsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //Creates an instance of UITableViewCell, with default appearance
-        //let cell = UITableViewCell(style: .value1, reuseIdentifier: "UITableViewCell")
-        
         //Get a new or recycled cell
         let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
         
@@ -68,6 +58,18 @@ class ItemsViewController: UITableViewController {
         cell.detailTextLabel?.text = "$\(item.valueInDollars)"
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        //If the table view is asking to commit a delete command...
+        if editingStyle == .delete {
+            let item = itemStore.allItems[indexPath.row]
+            //Remove the item from the store
+            itemStore.removeItem(item)
+            
+            //Also removed that row from the table view with an animation
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
     }
     
     override func viewDidLoad() {
