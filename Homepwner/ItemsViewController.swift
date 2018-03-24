@@ -9,8 +9,10 @@
 import UIKit
 
 class ItemsViewController: UITableViewController {
+    //Creates itemStore to store cell data
     var itemStore: ItemStore!
     
+    //Creates new item in array and tableview
     @IBAction func addNewItem(_ sender: UIButton) {
         //Create a new item and adds it to the store
         let newItem = itemStore.createItem()
@@ -24,6 +26,7 @@ class ItemsViewController: UITableViewController {
         }
     }
     
+    //Toggles editng mode
     @IBAction func toggleEditingMode(_ sender: UIButton) {
         //If you are currently in editing mode...
         if isEditing {
@@ -41,127 +44,69 @@ class ItemsViewController: UITableViewController {
         }
     }
     
+    //Returns the number of items in the itemStore array
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemStore.allItems.count
     }
     
+    //Creates the cells in the tableview
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        //If the cell is not the first in the array
         if itemStore.allItems.count > 1 {
             
+            //then creates a cell with name, serial number and value and sets them accordingly
             let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell
             let item = itemStore.allItems[indexPath.row+1]
             cell.nameLabel.text = item.name
             cell.serialNumberLabel.text = item.serialNumber
             cell.valueLabel.text = "$\(item.valueInDollars)"
+            
+            //If value is greater than 50 make value red
             if item.valueInDollars >= 50 {
                 cell.valueLabel.textColor = UIColor.red
-                //cell.valueLabel.text = "$\(item.valueInDollars)"
             } else {
+                //If less then 50 make value green
                 cell.valueLabel.textColor = UIColor(red: 0, green: 0.6392, blue: 0.1569, alpha: 1.0)
-                //cell.valueLabel.text = "$\(item.valueInDollars)"
             }
             
+            //Returns the cell
             //cell.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.75)
             return cell
             
         } else {
             
+            //If the cell is the first in the array, then creates the "No more items!" cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "LastItemCell", for: indexPath) as! LastItemCell
             let item = itemStore.allItems[indexPath.row]
             cell.lastNameLabel.text = item.name
             
+            //Returns No more items cell
             //cell.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.75)
             return cell
             
         }
-        
-        /*
-        let item = itemStore.allItems[indexPath.row]
-        print(item.name)
-        //Get a new or recycled cell
-        if item.name != "No More Items!" {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell
-            //Configure the cell with the item
-            cell.nameLabel.text = item.name
-            cell.serialNumberLabel.text = item.serialNumber
-            cell.valueLabel.text = "$\(item.valueInDollars)"
-            if item.valueInDollars >= 50 {
-                cell.valueLabel.textColor = UIColor.red
-                //cell.valueLabel.text = "$\(item.valueInDollars)"
-            } else {
-                cell.valueLabel.textColor = UIColor(red: 0, green: 0.6392, blue: 0.1569, alpha: 1.0)
-                //cell.valueLabel.text = "$\(item.valueInDollars)"
-            }
-            
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "LastItemCell", for: indexPath) as! LastItemCell
-            //cell.lastNameLabel.text = item.name
-            return cell
-        }*/
-        
-        /*
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell
-        //let lastCell = tableView.dequeueReusableCell(withIdentifier: "LastItemCell", for: indexPath) as! LastItemCell
-        
-        //Set the text on the cell with the descriptuon of the item
-        // that is at the nth index of items, where n = row this cell
-        // will appear in on the tableview
-        let item = itemStore.allItems[indexPath.row]
-        
-        print(itemStore.allItems.count)
-        if itemStore.allItems.count > 1 {
-            //Configure the cell with the item
-            cell.nameLabel.text = item.name
-            cell.serialNumberLabel.text = item.serialNumber
-            cell.valueLabel.text = "$\(item.valueInDollars)"
-            if item.valueInDollars >= 50 {
-                cell.valueLabel.textColor = UIColor.red
-                //cell.valueLabel.text = "$\(item.valueInDollars)"
-            } else {
-                cell.valueLabel.textColor = UIColor(red: 0, green: 0.6392, blue: 0.1569, alpha: 1.0)
-                //cell.valueLabel.text = "$\(item.valueInDollars)"
-            }
-            
-        } else {
-            cell.nameLabel.text = item.name
-            cell.serialNumberLabel.text = ""
-            cell.valueLabel.text = ""
-            
-        }
-        return cell */
- /*
-        //Configure the cell with the item
-        cell.nameLabel.text = item.name
-        cell.serialNumberLabel.text = item.serialNumber
-        cell.valueLabel.text = "$\(item.valueInDollars)"
-        if item.valueInDollars >= 50 {
-            cell.valueLabel.textColor = UIColor.red
-            //cell.valueLabel.text = "$\(item.valueInDollars)"
-        } else {
-            cell.valueLabel.textColor = UIColor(red: 0, green: 0.6392, blue: 0.1569, alpha: 1.0)
-            //cell.valueLabel.text = "$\(item.valueInDollars)"
-        }
-        
-        return cell*/
     }
     
+    //Function the detects and deletes cells
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
         //If the table view is asking to commit a delete command...
         if editingStyle == .delete {
             let item = itemStore.allItems[indexPath.row]
             
-            //let title = "Delete \(item.name)?"
+            //Sets title and message for delete alert
             let title = "Remove \(item.name)?"
-            //let message = "Are you sure you want to delete this item?"
             let message = "Are you sure you want to remove this item?"
             
+            //Creates an alert to prevent user from accidentaly deleteing an item
             let ac = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
             
+            //If canel is clicked then goes back to the home screen
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             ac.addAction(cancelAction)
             
+            //If delete is clicked then it removes cell and its information from the store
             let deleteAction = UIAlertAction(title: "Remove", style: .destructive, handler: { (action) -> Void in
                 //Remove the item from the store
                 self.itemStore.removeItem(item)
@@ -176,23 +121,23 @@ class ItemsViewController: UITableViewController {
         }
     }
     
+    //Function for moving the cells
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         //Update the model
         itemStore.moveItem(from: sourceIndexPath.row, to: destinationIndexPath.row)
     }
     
+    //Function that prevents the last item from being edited
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        NSLog("func run")
-        NSLog("\(indexPath.row)")
-        NSLog("\(itemStore.allItems.count)")
-        
         var edit = true
         
+        //If its currently on the last item then return false
         if(indexPath.row == itemStore.allItems.count-1) {
             
             edit = false
         }
         
+        //else return true to allow editing
         return edit
     }
     
@@ -213,15 +158,15 @@ class ItemsViewController: UITableViewController {
         //Get the height of the status bar
         let statusBarHeight = UIApplication.shared.statusBarFrame.height
         
+        //Sets the rows and height for the cells
         let insets = UIEdgeInsets(top: statusBarHeight, left: 0, bottom: 0, right: 0)
         tableView.contentInset = insets
         tableView.scrollIndicatorInsets = insets
         
-        //tableView.rowHeight = 65
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 65
         
-        tableView.backgroundColor = UIColor.clear
+        //Sets the background picture
         tableView.backgroundView = UIImageView(image: UIImage(named: "basketball"))
     }
 }

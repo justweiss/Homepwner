@@ -9,13 +9,16 @@
 import UIKit
 
 class ItemStore {
+    //Create the item store
     var allItems = [Item]()
     
+    //Creates the No More Items item as the first value
     init() {
         let newItem = Item(name: "No More Items!", serialNumber: nil, valueInDollars: 0)
         allItems.append(newItem)
     }
     
+    //function the is called when you add a new item to the tableview and creates a new item in the store
     @discardableResult func createItem() -> Item {
         let newItem = Item(random: true)
         
@@ -24,12 +27,14 @@ class ItemStore {
         return newItem
     }
     
+    //Removes item from the store
     func removeItem(_ item: Item) {
         if let index = allItems.index(of: item){
             allItems.remove(at: index)
         }
     }
     
+    //Moves item in the store
     func moveItem(from fromIndex: Int, to toIndex: Int) {
         if fromIndex == toIndex {
             return

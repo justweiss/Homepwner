@@ -9,11 +9,13 @@
 import UIKit
 
 class Item: NSObject {
+    //Create variables for the timestore
     var name: String
     var valueInDollars: Int
     var serialNumber: String?
     let dateCreated: Date
     
+    //is the init function to create items in the store
     init(name: String, serialNumber: String?, valueInDollars: Int) {
         self.name = name
         self.valueInDollars = valueInDollars
@@ -23,6 +25,7 @@ class Item: NSObject {
         super.init()
     }
     
+    //function that creates a random name, serial number and value
     convenience init(random: Bool = false){
         if random {
             let adjectives = ["Fluffy", "Rusty", "Shiny",]
