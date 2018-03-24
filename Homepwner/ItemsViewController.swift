@@ -194,14 +194,17 @@ class ItemsViewController: UITableViewController {
         }
         
         return edit
-        /*
-        if itemStore.allItems.count > 1 {
-            print("true")
-            return true
-        } else {
-            print("False")
-            return false
-        }*/
+    }
+    
+    //Prevents a cell from being moved below No more items
+    override func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+        
+        //If cells proposed location is at or below no more items return back to current spot
+        if proposedDestinationIndexPath.row == itemStore.allItems.count-1 {
+            return sourceIndexPath
+        }
+        //Other wise go anywhere
+        return proposedDestinationIndexPath
     }
     
     override func viewDidLoad() {
