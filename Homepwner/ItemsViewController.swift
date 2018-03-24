@@ -61,6 +61,8 @@ class ItemsViewController: UITableViewController {
                 cell.valueLabel.textColor = UIColor(red: 0, green: 0.6392, blue: 0.1569, alpha: 1.0)
                 //cell.valueLabel.text = "$\(item.valueInDollars)"
             }
+            
+            //cell.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.75)
             return cell
             
         } else {
@@ -68,6 +70,8 @@ class ItemsViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "LastItemCell", for: indexPath) as! LastItemCell
             let item = itemStore.allItems[indexPath.row]
             cell.lastNameLabel.text = item.name
+            
+            //cell.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.75)
             return cell
             
         }
@@ -213,5 +217,8 @@ class ItemsViewController: UITableViewController {
         //tableView.rowHeight = 65
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 65
+        
+        tableView.backgroundColor = UIColor.clear
+        tableView.backgroundView = UIImageView(image: UIImage(named: "basketball"))
     }
 }
