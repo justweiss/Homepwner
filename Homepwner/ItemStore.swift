@@ -11,6 +11,11 @@ import UIKit
 class ItemStore {
     var allItems = [Item]()
     
+    init() {
+        let newItem = Item(name: "No More Items!", serialNumber: nil, valueInDollars: 0)
+        allItems.append(newItem)
+    }
+    
     @discardableResult func createItem() -> Item {
         let newItem = Item(random: true)
         

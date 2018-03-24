@@ -22,3 +22,14 @@ class ItemCell: UITableViewCell {
         valueLabel.adjustsFontForContentSizeCategory = true
     }
 }
+
+class LastItemCell: UITableViewCell {
+    @IBOutlet var lastNameLabel: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        lastNameLabel.adjustsFontForContentSizeCategory = true
+
+    }
+}

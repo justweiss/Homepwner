@@ -90,6 +90,29 @@
                                     <outlet property="valueLabel" destination="sN7-mu-kEz" id="3Sp-Ph-K3z"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LastItemCell" rowHeight="65" id="6OP-dr-etK" customClass="LastItemCell" customModule="Homepwner" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="153" width="375" height="65"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6OP-dr-etK" id="C0j-Go-Irh">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="64.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xzb-YL-h2A">
+                                            <rect key="frame" x="166" y="22" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="xzb-YL-h2A" firstAttribute="centerX" secondItem="C0j-Go-Irh" secondAttribute="centerX" id="RRQ-z1-Nb7"/>
+                                        <constraint firstItem="xzb-YL-h2A" firstAttribute="centerY" secondItem="C0j-Go-Irh" secondAttribute="centerY" id="bU7-Nt-BPz"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="lastNameLabel" destination="xzb-YL-h2A" id="f6N-xx-GNP"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="2YK-rU-QxI" id="Zed-je-sHz"/>
