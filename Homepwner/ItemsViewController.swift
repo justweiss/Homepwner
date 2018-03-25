@@ -71,7 +71,7 @@ class ItemsViewController: UITableViewController {
             }
             
             //Returns the cell
-            //cell.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.75)
+            cell.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.75)
             return cell
             
         } else {
@@ -82,7 +82,8 @@ class ItemsViewController: UITableViewController {
             cell.lastNameLabel.text = item.name
             
             //Returns No more items cell
-            //cell.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.75)
+            cell.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.75)
+            //cell.backgroundColor = UIColor.clear
             return cell
             
         }
