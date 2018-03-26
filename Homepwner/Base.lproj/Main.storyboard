@@ -11,10 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="v7S-W1-DEb">
             <objects>
-                <viewController id="bDD-gI-j8e" sceneMemberID="viewController">
+                <viewController id="bDD-gI-j8e" customClass="DetailViewController" customModule="Homepwner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3Ve-Wo-3IQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -100,10 +100,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ApK-fs-yJN"/>
                     </view>
+                    <connections>
+                        <outlet property="dateLabel" destination="dd6-vZ-Sy8" id="FkU-jo-ula"/>
+                        <outlet property="nameField" destination="bc6-CQ-hWQ" id="1Me-v3-f3v"/>
+                        <outlet property="serialNumberField" destination="FuZ-pC-ein" id="iPP-WJ-QNQ"/>
+                        <outlet property="valueField" destination="FeV-g6-sYJ" id="vj2-v4-z40"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jen-dH-tgE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="879" y="140"/>
+            <point key="canvasLocation" x="839" y="140"/>
         </scene>
         <!--Items View Controller-->
         <scene sceneID="MPm-xg-nOu">
@@ -183,6 +189,7 @@
                                     <outlet property="nameLabel" destination="iSP-7g-nq7" id="amI-wx-By5"/>
                                     <outlet property="serialNumberLabel" destination="rWv-a4-kVl" id="iMR-QW-K8t"/>
                                     <outlet property="valueLabel" destination="sN7-mu-kEz" id="3Sp-Ph-K3z"/>
+                                    <segue destination="bDD-gI-j8e" kind="show" identifier="showItem" id="c1R-Ap-OHf"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LastItemCell" rowHeight="65" id="6OP-dr-etK" customClass="LastItemCell" customModule="Homepwner" customModuleProvider="target">
