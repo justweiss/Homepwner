@@ -102,7 +102,7 @@
                     </view>
                     <connections>
                         <outlet property="dateLabel" destination="dd6-vZ-Sy8" id="FkU-jo-ula"/>
-                        <outlet property="nameField" destination="bc6-CQ-hWQ" id="1Me-v3-f3v"/>
+                        <outlet property="nameField" destination="bc6-CQ-hWQ" id="FtD-bl-HKz"/>
                         <outlet property="serialNumberField" destination="FuZ-pC-ein" id="iPP-WJ-QNQ"/>
                         <outlet property="valueField" destination="FeV-g6-sYJ" id="vj2-v4-z40"/>
                     </connections>
