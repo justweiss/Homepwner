@@ -75,3 +75,18 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         }
     }
 }
+
+class UICustomTextField: UITextField {
+    override func becomeFirstResponder() -> Bool {
+        let becomeFirstResponder = super.becomeFirstResponder()
+        
+        borderStyle = .line
+        return becomeFirstResponder
+    }
+    override func resignFirstResponder() -> Bool {
+        let resignFirstResponder = super.resignFirstResponder()
+        
+        borderStyle = .roundedRect
+        return resignFirstResponder
+    }
+}
