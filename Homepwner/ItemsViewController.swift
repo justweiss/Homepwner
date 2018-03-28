@@ -19,7 +19,7 @@ class ItemsViewController: UITableViewController {
         
         //Figure out where that item is in the array
         if let index = itemStore.allItems.index(of: newItem) {
-            let indexPath = IndexPath(row: index-1, section: 0)
+            let indexPath = IndexPath(row: index, section: 0)
             
             //Inserts this new row into the table
             tableView.insertRows(at: [indexPath], with: .automatic)
@@ -52,12 +52,14 @@ class ItemsViewController: UITableViewController {
     //Creates the cells in the tableview
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        print(itemStore.allItems.count)
+        print(indexPath.row)
         //If the cell is not the first in the array
-        if itemStore.allItems.count > 1 {
+        if indexPath.row < itemStore.allItems.count {
             
             //then creates a cell with name, serial number and value and sets them accordingly
             let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell
-            let item = itemStore.allItems[indexPath.row+1]
+            let item = itemStore.allItems[indexPath.row]
             cell.nameLabel.text = item.name
             cell.serialNumberLabel.text = item.serialNumber
             cell.valueLabel.text = "$\(item.valueInDollars)"
@@ -160,7 +162,7 @@ class ItemsViewController: UITableViewController {
             //Fugyre out which row was just tapped
             if let row = tableView.indexPathForSelectedRow?.row {
                 //Get the item associated with this row and pass it along
-                let item = itemStore.allItems[row+1]
+                let item = itemStore.allItems[row]
                 let detailViewController = segue.destination as! DetailViewController
                 detailViewController.item = item
             }
@@ -186,5 +188,11 @@ class ItemsViewController: UITableViewController {
         
         //Sets the background picture
         tableView.backgroundView = UIImageView(image: UIImage(named: "basketball"))
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
     }
 }
