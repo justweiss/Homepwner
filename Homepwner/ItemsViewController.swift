@@ -13,7 +13,8 @@ class ItemsViewController: UITableViewController {
     var itemStore: ItemStore!
     
     //Creates new item in array and tableview
-    @IBAction func addNewItem(_ sender: UIButton) {
+    //@IBAction func addNewItem(_ sender: UIButton) {
+    @IBAction func addNewItem(_ sender: UIBarButtonItem) {
         //Create a new item and adds it to the store
         let newItem = itemStore.createItem()
         
@@ -172,16 +173,22 @@ class ItemsViewController: UITableViewController {
         }
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        navigationItem.leftBarButtonItem = editButtonItem
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //Get the height of the status bar
-        let statusBarHeight = UIApplication.shared.statusBarFrame.height
+        //let statusBarHeight = UIApplication.shared.statusBarFrame.height
         
         //Sets the rows and height for the cells
-        let insets = UIEdgeInsets(top: statusBarHeight, left: 0, bottom: 0, right: 0)
-        tableView.contentInset = insets
-        tableView.scrollIndicatorInsets = insets
+        //let insets = UIEdgeInsets(top: statusBarHeight, left: 0, bottom: 0, right: 0)
+        //tableView.contentInset = insets
+        //tableView.scrollIndicatorInsets = insets
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 65
