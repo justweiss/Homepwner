@@ -44,9 +44,26 @@ class ItemsViewController: UITableViewController {
         }
     }
     
+    // add a section for the "No more items!" cell
+    // override UITableViewDataSource protocol
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    } // end numberOfSections(in:)
+    
     //Returns the number of items in the itemStore array
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemStore.allItems.count
+        //return itemStore.allItems.count
+        
+        if section == 0 {
+            return itemStore.allItems.count
+        } // end if
+        else if section == 1 {    // section == 1 for the row that says "No more items!"
+            return 1
+        } // end else if
+        else {
+            print("More than 2 sections!!!")
+            return 0
+        } // ene else
     }
     
     //Creates the cells in the tableview
@@ -54,6 +71,48 @@ class ItemsViewController: UITableViewController {
         
         print(itemStore.allItems.count)
         print(indexPath.row)
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell
+        
+        // Update the labels for the new preferred text size
+        //cell.updateLabels()
+        
+        if indexPath.section == 0 {
+            // Set the text on the cell with the description of the
+            // item that is at the nth index of items, where
+            // n = row this cell will appear in on the tableview
+            let item = itemStore.allItems[indexPath.row]
+            
+            //If value is greater than 50 make value red
+            if item.valueInDollars >= 50 {
+                cell.valueLabel.textColor = UIColor.red
+            } else {
+                //If less then 50 make value green
+                cell.valueLabel.textColor = UIColor(red: 0, green: 0.6392, blue: 0.1569, alpha: 1.0)
+            }
+            
+            // Configure the cell with the Item
+            cell.nameLabel.text = item.name
+            cell.serialNumberLabel.text = item.serialNumber
+            cell.valueLabel.text = "$\(item.valueInDollars)"
+            cell.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.75)
+        } else {
+            //If the cell is the first in the array, then creates the "No more items!" cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LastItemCell", for: indexPath) as! LastItemCell
+            //let item = itemStore.allItems[indexPath.row]
+            cell.lastNameLabel.text = "No more items!"
+            
+            //Returns No more items cell
+            cell.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.75)
+            //cell.backgroundColor = UIColor.clear
+            return cell
+    
+        }
+        
+        return cell
+        
+        
+        /*
         //If the cell is not the first in the array
         if indexPath.row < itemStore.allItems.count {
             
@@ -88,7 +147,7 @@ class ItemsViewController: UITableViewController {
             //cell.backgroundColor = UIColor.clear
             return cell
             
-        }
+        }*/
     }
     
     //Function the detects and deletes cells
@@ -132,6 +191,8 @@ class ItemsViewController: UITableViewController {
     
     //Function that prevents the last item from being edited
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return (indexPath.section == 0) ? true : false
+        /*
         var edit = true
         
         //If its currently on the last item then return false
@@ -141,18 +202,28 @@ class ItemsViewController: UITableViewController {
         }
         
         //else return true to allow editing
-        return edit
+        return edit*/
     }
     
     //Prevents a cell from being moved below No more items
     override func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
         
+        // desired location is still in section 0, let it happen
+        if proposedDestinationIndexPath.section == 0 {
+            return proposedDestinationIndexPath
+        } // end if
+        else {   // trying to move to section 1, put at end of section 0
+            return IndexPath(row: itemStore.allItems.count - 1, section: 0)
+            // alternatively, return to original position
+            //            return sourceIndexPath
+        } // end else
+        /*
         //If cells proposed location is at or below no more items return back to current spot
         if proposedDestinationIndexPath.row == itemStore.allItems.count-1 {
             return sourceIndexPath
         }
         //Other wise go anywhere
-        return proposedDestinationIndexPath
+        return proposedDestinationIndexPath*/
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

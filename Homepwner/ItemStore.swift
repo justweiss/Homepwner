@@ -13,10 +13,11 @@ class ItemStore {
     var allItems = [Item]()
     
     //Creates the No More Items item as the first value
+    /*
     init() {
         let newItem = Item(name: "No More Items!", serialNumber: nil, valueInDollars: 0)
         allItems.append(newItem)
-    }
+    }*/
     
     //function the is called when you add a new item to the tableview and creates a new item in the store
     @discardableResult func createItem() -> Item {
