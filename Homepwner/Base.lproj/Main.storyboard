@@ -111,7 +111,6 @@
                         <viewLayoutGuide key="safeArea" id="ApK-fs-yJN"/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="DG7-9R-WIG" appends="YES" id="9sK-6D-RJL"/>
-                            <outletCollection property="gestureRecognizers" destination="DG7-9R-WIG" appends="YES" id="964-xf-9Q2"/>
                         </connections>
                     </view>
                     <connections>
@@ -130,7 +129,7 @@
             </objects>
             <point key="canvasLocation" x="1176.8" y="139.880059970015"/>
         </scene>
-        <!--Items View Controller-->
+        <!--Homepwner-->
         <scene sceneID="MPm-xg-nOu">
             <objects>
                 <tableViewController id="2YK-rU-QxI" customClass="ItemsViewController" customModule="Homepwner" customModuleProvider="target" sceneMemberID="viewController">
@@ -240,7 +239,7 @@
                             <outlet property="delegate" destination="2YK-rU-QxI" id="9QX-BI-t94"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="q3o-XY-xTK"/>
+                    <navigationItem key="navigationItem" title="Homepwner" id="q3o-XY-xTK"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sp4-ho-Rhb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
