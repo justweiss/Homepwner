@@ -51,8 +51,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         
         nameField.text = item.name
         serialNumberField.text = item.serialNumber
-        //valueField.text = "\(item.valueInDollars)"
-        //dateLabel.text = "\(item.dateCreated)"
         valueField.text = numberFormatter.string(from: NSNumber(value: item.valueInDollars))
         dateLabel.text = dateFormatter.string(from: item.dateCreated)
     }
@@ -72,6 +70,20 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
             item.valueInDollars = value.intValue
         } else {
             item.valueInDollars = 0
+        }
+    }
+    // override UIViewController method
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //If the triggered segue is the "ShowItem" segue
+        // note that it all seems to work without this identifier check
+        if segue.identifier == "ChangeDate" {
+            
+            // take advantage of DetailViewController's item
+            // which is was obtained from ItemViewController
+            // in ItemViewController's implementation of prepare(for:_:)
+            let datePickerViewController = segue.destination as! DatePickerViewController
+            datePickerViewController.item = item
+            
         }
     }
 }

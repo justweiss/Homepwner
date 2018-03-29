@@ -69,13 +69,7 @@ class ItemsViewController: UITableViewController {
     //Creates the cells in the tableview
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        print(itemStore.allItems.count)
-        print(indexPath.row)
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell
-        
-        // Update the labels for the new preferred text size
-        //cell.updateLabels()
         
         if indexPath.section == 0 {
             // Set the text on the cell with the description of the
@@ -110,44 +104,6 @@ class ItemsViewController: UITableViewController {
         }
         
         return cell
-        
-        
-        /*
-        //If the cell is not the first in the array
-        if indexPath.row < itemStore.allItems.count {
-            
-            //then creates a cell with name, serial number and value and sets them accordingly
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell
-            let item = itemStore.allItems[indexPath.row]
-            cell.nameLabel.text = item.name
-            cell.serialNumberLabel.text = item.serialNumber
-            cell.valueLabel.text = "$\(item.valueInDollars)"
-            
-            //If value is greater than 50 make value red
-            if item.valueInDollars >= 50 {
-                cell.valueLabel.textColor = UIColor.red
-            } else {
-                //If less then 50 make value green
-                cell.valueLabel.textColor = UIColor(red: 0, green: 0.6392, blue: 0.1569, alpha: 1.0)
-            }
-            
-            //Returns the cell
-            cell.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.75)
-            return cell
-            
-        } else {
-            
-            //If the cell is the first in the array, then creates the "No more items!" cell
-            let cell = tableView.dequeueReusableCell(withIdentifier: "LastItemCell", for: indexPath) as! LastItemCell
-            let item = itemStore.allItems[indexPath.row]
-            cell.lastNameLabel.text = item.name
-            
-            //Returns No more items cell
-            cell.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.75)
-            //cell.backgroundColor = UIColor.clear
-            return cell
-            
-        }*/
     }
     
     //Function the detects and deletes cells
@@ -192,17 +148,6 @@ class ItemsViewController: UITableViewController {
     //Function that prevents the last item from being edited
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return (indexPath.section == 0) ? true : false
-        /*
-        var edit = true
-        
-        //If its currently on the last item then return false
-        if(indexPath.row == itemStore.allItems.count-1) {
-            
-            edit = false
-        }
-        
-        //else return true to allow editing
-        return edit*/
     }
     
     //Prevents a cell from being moved below No more items
@@ -211,19 +156,10 @@ class ItemsViewController: UITableViewController {
         // desired location is still in section 0, let it happen
         if proposedDestinationIndexPath.section == 0 {
             return proposedDestinationIndexPath
-        } // end if
-        else {   // trying to move to section 1, put at end of section 0
+        } else {
+            // trying to move to section 1, put at end of section 0
             return IndexPath(row: itemStore.allItems.count - 1, section: 0)
-            // alternatively, return to original position
-            //            return sourceIndexPath
-        } // end else
-        /*
-        //If cells proposed location is at or below no more items return back to current spot
-        if proposedDestinationIndexPath.row == itemStore.allItems.count-1 {
-            return sourceIndexPath
         }
-        //Other wise go anywhere
-        return proposedDestinationIndexPath*/
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -13,7 +13,7 @@ class Item: NSObject {
     var name: String
     var valueInDollars: Int
     var serialNumber: String?
-    let dateCreated: Date
+    var dateCreated: Date
     
     //is the init function to create items in the store
     init(name: String, serialNumber: String?, valueInDollars: Int) {
