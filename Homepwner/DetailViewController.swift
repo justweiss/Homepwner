@@ -20,6 +20,9 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         view.endEditing(true)
     }
     
+    @IBAction func takePicture(_ sender: UIBarButtonItem) {
+    }
+    
     var item: Item! {
         didSet {
             navigationItem.title = item.name

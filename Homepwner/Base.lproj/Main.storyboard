@@ -20,10 +20,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fqU-Hg-Ns2">
-                                <rect key="frame" x="16" y="72" width="343" height="587"/>
+                                <rect key="frame" x="16" y="72" width="343" height="543"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="oo0-U5-04Y">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="587"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="543"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fmw-T9-aMw">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
@@ -99,7 +99,7 @@
                                                 </connections>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="248" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="3Bj-JT-dO1">
-                                                <rect key="frame" x="0.0" y="180.5" width="343" height="406.5"/>
+                                                <rect key="frame" x="0.0" y="180.5" width="343" height="362.5"/>
                                             </imageView>
                                         </subviews>
                                         <constraints>
@@ -109,11 +109,27 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U2I-qi-XIG">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="IX2-QO-VsO"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem systemItem="camera" id="oUn-LL-5za">
+                                        <connections>
+                                            <action selector="takePicture:" destination="bDD-gI-j8e" id="lgu-P1-weE"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="ApK-fs-yJN" firstAttribute="bottom" secondItem="fqU-Hg-Ns2" secondAttribute="bottom" constant="8" id="9lz-MV-r0Y"/>
+                            <constraint firstItem="U2I-qi-XIG" firstAttribute="trailing" secondItem="ApK-fs-yJN" secondAttribute="trailing" id="1gO-2S-yvo"/>
+                            <constraint firstItem="U2I-qi-XIG" firstAttribute="bottom" secondItem="ApK-fs-yJN" secondAttribute="bottom" id="CnR-eu-xpf"/>
+                            <constraint firstItem="U2I-qi-XIG" firstAttribute="leading" secondItem="ApK-fs-yJN" secondAttribute="leading" id="M9G-03-3ha"/>
+                            <constraint firstItem="U2I-qi-XIG" firstAttribute="top" secondItem="fqU-Hg-Ns2" secondAttribute="bottom" constant="8" id="UE7-G3-Mc4"/>
                             <constraint firstItem="oo0-U5-04Y" firstAttribute="leading" secondItem="3Ve-Wo-3IQ" secondAttribute="leadingMargin" id="bmg-RT-Tfs"/>
                             <constraint firstItem="fqU-Hg-Ns2" firstAttribute="top" secondItem="ApK-fs-yJN" secondAttribute="top" constant="8" id="eC1-uv-AwL"/>
                             <constraint firstAttribute="trailingMargin" secondItem="oo0-U5-04Y" secondAttribute="trailing" id="qrq-M4-d0b"/>
