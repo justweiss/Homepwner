@@ -10,6 +10,8 @@ import UIKit
 
 class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
+    var imageStore: ImageStore!
+    
     @IBOutlet var nameField: UITextField!
     @IBOutlet var serialNumberField: UITextField!
     @IBOutlet var valueField: UITextField!
@@ -35,6 +37,21 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
         
         //Place image picker on the screen
         present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController (_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
+        
+        //Get picked image from info dictionary
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        
+        //Store the image in the ImageStore for the item's key
+        imageStore.setImage(image, forKey: item.itemKey)
+        
+        //Put that image on the screen in the image view
+        imageView.image = image
+        
+        //Take image picker off the screen
+        dismiss(animated: true, completion: nil)
     }
     
     var item: Item! {

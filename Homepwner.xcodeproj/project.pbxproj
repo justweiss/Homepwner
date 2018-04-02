@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		770B754E205EF3ED0057BA83 /* ItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770B754D205EF3ED0057BA83 /* ItemStore.swift */; };
 		7719F730206C4917007635FB /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7719F72F206C4917007635FB /* DatePickerViewController.swift */; };
+		775330342072D690001D1B12 /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775330332072D690001D1B12 /* ImageStore.swift */; };
 		77954115206998F20043D337 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77954114206998F20043D337 /* DetailViewController.swift */; };
 		77ED146C2061A20800E59316 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77ED146B2061A20800E59316 /* ItemCell.swift */; };
 		77FB14E7205EED22005FF2D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FB14E6205EED22005FF2D5 /* AppDelegate.swift */; };
@@ -41,6 +42,7 @@
 /* Begin PBXFileReference section */
 		770B754D205EF3ED0057BA83 /* ItemStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStore.swift; sourceTree = "<group>"; };
 		7719F72F206C4917007635FB /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
+		775330332072D690001D1B12 /* ImageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 		77954114206998F20043D337 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		77ED146B2061A20800E59316 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		77FB14E3205EED22005FF2D5 /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,6 +115,7 @@
 				7719F72F206C4917007635FB /* DatePickerViewController.swift */,
 				77FB1516205EEF30005FF2D5 /* Item.swift */,
 				770B754D205EF3ED0057BA83 /* ItemStore.swift */,
+				775330332072D690001D1B12 /* ImageStore.swift */,
 				77ED146B2061A20800E59316 /* ItemCell.swift */,
 				77FB14EA205EED22005FF2D5 /* Main.storyboard */,
 				77FB14ED205EED22005FF2D5 /* Assets.xcassets */,
@@ -277,6 +280,7 @@
 				77FB1515205EEE01005FF2D5 /* ItemsViewController.swift in Sources */,
 				77FB1517205EEF30005FF2D5 /* Item.swift in Sources */,
 				7719F730206C4917007635FB /* DatePickerViewController.swift in Sources */,
+				775330342072D690001D1B12 /* ImageStore.swift in Sources */,
 				770B754E205EF3ED0057BA83 /* ItemStore.swift in Sources */,
 				77954115206998F20043D337 /* DetailViewController.swift in Sources */,
 				77FB14E7205EED22005FF2D5 /* AppDelegate.swift in Sources */,
