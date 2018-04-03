@@ -13,6 +13,14 @@ class ItemsViewController: UITableViewController {
     var itemStore: ItemStore!
     var imageStore: ImageStore!
     
+    //MARK: - Initializers
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        navigationItem.leftBarButtonItem = editButtonItem
+    }
+    
+    //MARK: - Actions
     //Creates new item in array and tableview
     @IBAction func addNewItem(_ sender: UIBarButtonItem) {
         //Create a new item and adds it to the store
@@ -24,6 +32,24 @@ class ItemsViewController: UITableViewController {
             
             //Inserts this new row into the table
             tableView.insertRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //If the triggered segue is the "showItem" segue
+        switch segue.identifier {
+        case "showItem"?:
+            //Fugyre out which row was just tapped
+            if let row = tableView.indexPathForSelectedRow?.row {
+                //Get the item associated with this row and pass it along
+                let item = itemStore.allItems[row]
+                let detailViewController = segue.destination as! DetailViewController
+                detailViewController.item = item
+                detailViewController.imageStore = imageStore
+            }
+            
+        default:
+            preconditionFailure("Unexpected segue identifier.")
         }
     }
     
@@ -45,6 +71,7 @@ class ItemsViewController: UITableViewController {
         }
     }
     
+    //MARK: - TableView Methods
     // add a section for the "No more items!" cell
     // override UITableViewDataSource protocol
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -165,30 +192,7 @@ class ItemsViewController: UITableViewController {
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //If the triggered segue is the "showItem" segue
-        switch segue.identifier {
-        case "showItem"?:
-            //Fugyre out which row was just tapped
-            if let row = tableView.indexPathForSelectedRow?.row {
-                //Get the item associated with this row and pass it along
-                let item = itemStore.allItems[row]
-                let detailViewController = segue.destination as! DetailViewController
-                detailViewController.item = item
-                detailViewController.imageStore = imageStore
-            }
-        
-        default:
-            preconditionFailure("Unexpected segue identifier.")
-        }
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        navigationItem.leftBarButtonItem = editButtonItem
-    }
-    
+    //MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         

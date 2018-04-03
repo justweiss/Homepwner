@@ -10,6 +10,7 @@ import UIKit
 
 class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
+    //MARK: - Initializers
     var imageStore: ImageStore!
     
     @IBOutlet var nameField: UITextField!
@@ -18,10 +19,38 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var imageView: UIImageView!
     
+    var item: Item! {
+        didSet {
+            navigationItem.title = item.name
+        }
+    }
+    
+    let numberFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 2
+        return formatter
+    }()
+    
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        return formatter
+    }()
+    
+    //MARK: - Resign First Responder
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
     
+    //MARK: - Picture Actions
     @IBAction func takePicture(_ sender: UIBarButtonItem) {
         
         let imagePicker = UIImagePickerController()
@@ -54,33 +83,23 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
         dismiss(animated: true, completion: nil)
     }
     
-    var item: Item! {
-        didSet {
-            navigationItem.title = item.name
+    //MARK: - Changed Date ViewController
+    // override UIViewController method
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //If the triggered segue is the "ShowItem" segue
+        // note that it all seems to work without this identifier check
+        if segue.identifier == "ChangeDate" {
+            
+            // take advantage of DetailViewController's item
+            // which is was obtained from ItemViewController
+            // in ItemViewController's implementation of prepare(for:_:)
+            let datePickerViewController = segue.destination as! DatePickerViewController
+            datePickerViewController.item = item
+            
         }
     }
     
-    let numberFormatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        formatter.minimumFractionDigits = 2
-        formatter.maximumFractionDigits = 2
-        return formatter
-    }()
-    
-    let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .none
-        return formatter
-    }()
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        
-        return true
-    }
-    
+    //MARK: - View life cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -114,22 +133,9 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
             item.valueInDollars = 0
         }
     }
-    // override UIViewController method
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //If the triggered segue is the "ShowItem" segue
-        // note that it all seems to work without this identifier check
-        if segue.identifier == "ChangeDate" {
-            
-            // take advantage of DetailViewController's item
-            // which is was obtained from ItemViewController
-            // in ItemViewController's implementation of prepare(for:_:)
-            let datePickerViewController = segue.destination as! DatePickerViewController
-            datePickerViewController.item = item
-            
-        }
-    }
 }
 
+// MARK: - Custon TextField
 class UICustomTextField: UITextField {
     override func becomeFirstResponder() -> Bool {
         let becomeFirstResponder = super.becomeFirstResponder()
