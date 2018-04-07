@@ -83,6 +83,17 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
         dismiss(animated: true, completion: nil)
     }
     
+    //MARK: - Remove Picture
+    @IBAction func removePicture(_ sender: UIBarButtonItem) {
+        
+        //Deletes the image from the imageStore
+        imageStore.deleteImage(forKey: item.itemKey)
+        
+        //Removes the image from the screen
+        imageView.image = nil
+        
+    }
+    
     //MARK: - Changed Date ViewController
     // override UIViewController method
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
