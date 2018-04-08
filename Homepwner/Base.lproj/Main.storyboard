@@ -174,7 +174,7 @@
         <!--New Item-->
         <scene sceneID="ujC-3Q-UpZ">
             <objects>
-                <viewController id="EG4-IV-L3R" customClass="NewItemViewController" customModule="Homepwner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewItem" useStoryboardIdentifierAsRestorationIdentifier="YES" id="EG4-IV-L3R" customClass="NewItemViewController" customModule="Homepwner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rmi-v3-B8b">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -261,7 +261,7 @@
                                                         <rect key="frame" x="179.5" y="0.0" width="179.5" height="30"/>
                                                         <state key="normal" title="Change Date"/>
                                                         <connections>
-                                                            <segue destination="OhL-20-MIR" kind="show" id="yns-Zo-yDP"/>
+                                                            <segue destination="Y5Z-HK-btY" kind="show" id="cGy-Vp-FXC"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -315,7 +315,11 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="New Item" id="Pxd-NQ-8OD">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ilY-HI-S8V"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ilY-HI-S8V">
+                            <connections>
+                                <action selector="cancel:" destination="EG4-IV-L3R" id="ggu-is-lu7"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="LAR-j0-muu">
                             <connections>
                                 <segue destination="kCL-IB-zLk" kind="unwind" unwindAction="unwindToItemListWithSender:" id="Ss5-ZW-DOh"/>
@@ -500,8 +504,44 @@
             </objects>
             <point key="canvasLocation" x="284" y="860"/>
         </scene>
+        <!--New Date Picker View Controller-->
+        <scene sceneID="Vba-N2-oSj">
+            <objects>
+                <viewController id="Y5Z-HK-btY" customClass="NewDatePickerViewController" customModule="Homepwner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IdA-ws-hjL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="mfo-eC-0tU">
+                                <rect key="frame" x="27.5" y="225.5" width="320" height="216"/>
+                                <date key="date" timeIntervalSinceReferenceDate="543967458.954934">
+                                    <!--2018-03-28 22:04:18 +0000-->
+                                </date>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F21-Cw-4sl" userLabel="Set Date">
+                                <rect key="frame" x="157" y="150.5" width="60" height="30"/>
+                                <state key="normal" title="Set Date"/>
+                                <connections>
+                                    <action selector="backButton:" destination="Y5Z-HK-btY" eventType="touchUpInside" id="9l6-3P-SVO"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mfo-eC-0tU" firstAttribute="centerX" secondItem="IdA-ws-hjL" secondAttribute="centerX" id="AVa-bK-o3w"/>
+                            <constraint firstItem="F21-Cw-4sl" firstAttribute="centerX" secondItem="IdA-ws-hjL" secondAttribute="centerX" id="eaB-as-60e"/>
+                            <constraint firstItem="mfo-eC-0tU" firstAttribute="top" secondItem="F21-Cw-4sl" secondAttribute="bottom" constant="45" id="jr9-Vs-bdi"/>
+                            <constraint firstItem="mfo-eC-0tU" firstAttribute="centerY" secondItem="IdA-ws-hjL" secondAttribute="centerY" id="jv6-9K-blx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="WAw-me-3MI"/>
+                    </view>
+                    <connections>
+                        <outlet property="datePicker" destination="mfo-eC-0tU" id="Tq0-3K-Pa8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gNC-Rb-gQg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1885.5999999999999" y="859.52023988005999"/>
+        </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="yns-Zo-yDP"/>
-    </inferredMetricsTieBreakers>
 </document>

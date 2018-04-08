@@ -13,6 +13,7 @@ class NewItemViewController: UIViewController, UITextFieldDelegate, UINavigation
     var itemStore: ItemStore!
     var imageStore: ImageStore!
     var item: Item!
+    var datePickerDate = Date()
     
     @IBOutlet var nameField: UITextField!
     @IBOutlet var serialNumberField: UITextField!
@@ -35,6 +36,10 @@ class NewItemViewController: UIViewController, UITextFieldDelegate, UINavigation
         formatter.timeStyle = .none
         return formatter
     }()
+    
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
     
     
     //MARK: - Resign First Responder
@@ -105,13 +110,14 @@ class NewItemViewController: UIViewController, UITextFieldDelegate, UINavigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //If the triggered segue is the "ShowItem" segue
         // note that it all seems to work without this identifier check
-        if segue.identifier == "ChangeDate" {
+        if segue.identifier == "NewItemDate" {
+            print("NewItemDate")
             
             // take advantage of DetailViewController's item
             // which is was obtained from ItemViewController
             // in ItemViewController's implementation of prepare(for:_:)
-            let datePickerViewController = segue.destination as! DatePickerViewController
-            datePickerViewController.item = item
+            //let datePickerViewController = segue.destination as! DatePickerViewController
+            //datePickerViewController.datePicker = dateLabel
             
         }
         guard let button = sender as? UIBarButtonItem, button === saveButton else {
@@ -126,7 +132,10 @@ class NewItemViewController: UIViewController, UITextFieldDelegate, UINavigation
             Value = value.intValue
         }
         item = Item(name: name!, serialNumber: serialNumber, valueInDollars: Value)
+        print(datePickerDate)
         //let imageStore = imageView.image
+        
+        //DatePickerViewController.datePicker
         
     }
     
@@ -134,7 +143,7 @@ class NewItemViewController: UIViewController, UITextFieldDelegate, UINavigation
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        dateLabel.text = dateFormatter.string(from: Date())
+        dateLabel.text = dateFormatter.string(from: datePickerDate)
         
         //saveButton.isEnabled = false
         
@@ -143,6 +152,8 @@ class NewItemViewController: UIViewController, UITextFieldDelegate, UINavigation
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        dateLabel.text = dateFormatter.string(from: datePickerDate)
         
         //nameField.text = item.name
         //serialNumberField.text = item.serialNumber

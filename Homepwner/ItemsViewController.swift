@@ -40,6 +40,7 @@ class ItemsViewController: UITableViewController {
             if let image = sourceViewController.imageView.image {
                 imageStore.setImage(image, forKey: item.itemKey)
             }
+            item.dateCreated = sourceViewController.datePickerDate
             
             //Inserts this new row into the table
             //tableView.insertRows(at: [indexPath], with: .automatic)

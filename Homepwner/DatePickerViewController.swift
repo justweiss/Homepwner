@@ -26,7 +26,7 @@ class DatePickerViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         // "Save changes to item
-        
+        //NewItemViewController.self.datePickerDate = Date()
         let date = datePicker.date
         item.dateCreated = date
         

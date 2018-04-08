@@ -115,6 +115,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
             // in ItemViewController's implementation of prepare(for:_:)
             let datePickerViewController = segue.destination as! DatePickerViewController
             datePickerViewController.item = item
+            //item.dateCreated = datePickerViewController.datePicker.date
             
         }
     }
