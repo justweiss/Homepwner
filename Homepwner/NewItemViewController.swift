@@ -124,6 +124,7 @@ class NewItemViewController: UIViewController, UITextFieldDelegate, UINavigation
             print("Cancel")
             return
         }
+        
         let name = nameField.text
         let serialNumber = serialNumberField.text
         var Value = 0
@@ -139,13 +140,21 @@ class NewItemViewController: UIViewController, UITextFieldDelegate, UINavigation
         
     }
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if nameField.text == "" || valueField.text == "" {
+            saveButton.isEnabled = false
+        } else {
+            saveButton.isEnabled = true
+        }
+    }
+    
     //MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         dateLabel.text = dateFormatter.string(from: datePickerDate)
         
-        //saveButton.isEnabled = false
+        saveButton.isEnabled = false
         
         //nameField.delegate = self
     }
