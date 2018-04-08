@@ -40,8 +40,8 @@ class ItemStore {
     
     //MARK: - Actions
     //function the is called when you add a new item to the tableview and creates a new item in the store
-    @discardableResult func createItem() -> Item {
-        let newItem = Item(random: true)
+    @discardableResult func createItem(item: Item) -> Item {
+        let newItem = item
         
         allItems.append(newItem)
         

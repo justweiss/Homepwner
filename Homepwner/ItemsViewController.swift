@@ -21,18 +21,43 @@ class ItemsViewController: UITableViewController {
     }
     
     //MARK: - Actions
+    @IBAction func unwindToItemList(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.source as? NewItemViewController, let item = sourceViewController.item {
+            
+            //let newItem = Item.init(name: item.name, serialNumber: item.serialNumber, valueInDollars: item.valueInDollars)
+            
+            //itemStore.createItem(item: newItem)
+            
+            print("Adding...")
+            let newItem = itemStore.createItem(item: item)
+            if let index = itemStore.allItems.index(of: newItem) {
+                let indexPath = IndexPath(row: index, section: 0)
+                
+                //Inserts this new row into the table
+                tableView.insertRows(at: [indexPath], with: .automatic)
+            }
+            
+            if let image = sourceViewController.imageView.image {
+                imageStore.setImage(image, forKey: item.itemKey)
+            }
+            
+            //Inserts this new row into the table
+            //tableView.insertRows(at: [indexPath], with: .automatic)
+            
+        }
+    }
     //Creates new item in array and tableview
     @IBAction func addNewItem(_ sender: UIBarButtonItem) {
         //Create a new item and adds it to the store
-        let newItem = itemStore.createItem()
+        //let newItem = itemStore.createItem()
         
         //Figure out where that item is in the array
-        if let index = itemStore.allItems.index(of: newItem) {
-            let indexPath = IndexPath(row: index, section: 0)
+        //if let index = itemStore.allItems.index(of: newItem) {
+            //let indexPath = IndexPath(row: index, section: 0)
             
             //Inserts this new row into the table
-            tableView.insertRows(at: [indexPath], with: .automatic)
-        }
+            //tableView.insertRows(at: [indexPath], with: .automatic)
+        //}
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -47,6 +72,8 @@ class ItemsViewController: UITableViewController {
                 detailViewController.item = item
                 detailViewController.imageStore = imageStore
             }
+        case "AddItem"?:
+            print("AddItem")
             
         default:
             preconditionFailure("Unexpected segue identifier.")

@@ -1,29 +1,25 @@
 //
-//  DetailViewController.swift
+//  NewItemViewController.swift
 //  Homepwner
 //
-//  Created by Justin Weiss on 3/26/18.
+//  Created by Justin Weiss on 4/8/18.
 //  Copyright © 2018 Justin Weiss. All rights reserved.
 //
 
 import UIKit
 
-class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    
-    //MARK: - Initializers
+class NewItemViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    //Creates itemStore to store cell data
+    var itemStore: ItemStore!
     var imageStore: ImageStore!
+    var item: Item!
     
     @IBOutlet var nameField: UITextField!
     @IBOutlet var serialNumberField: UITextField!
     @IBOutlet var valueField: UITextField!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var imageView: UIImageView!
-    
-    var item: Item! {
-        didSet {
-            navigationItem.title = item.name
-        }
-    }
+    @IBOutlet var saveButton: UIBarButtonItem!
     
     let numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -39,6 +35,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
         formatter.timeStyle = .none
         return formatter
     }()
+    
     
     //MARK: - Resign First Responder
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
@@ -83,7 +80,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         
         //Store the image in the ImageStore for the item's key
-        imageStore.setImage(image, forKey: item.itemKey)
+        //imageStore.setImage(image, forKey: item.itemKey)
         
         //Put that image on the screen in the image view
         imageView.image = image
@@ -96,7 +93,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
     @IBAction func removePicture(_ sender: UIBarButtonItem) {
         
         //Deletes the image from the imageStore
-        imageStore.deleteImage(forKey: item.itemKey)
+        //imageStore.deleteImage(forKey: item.itemKey)
         
         //Removes the image from the screen
         imageView.image = nil
@@ -117,23 +114,47 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
             datePickerViewController.item = item
             
         }
+        guard let button = sender as? UIBarButtonItem, button === saveButton else {
+            print("Cancel")
+            return
+        }
+        let name = nameField.text
+        let serialNumber = serialNumberField.text
+        var Value = 0
+        if let valueText = valueField.text,
+            let value = numberFormatter.number(from: valueText) {
+            Value = value.intValue
+        }
+        item = Item(name: name!, serialNumber: serialNumber, valueInDollars: Value)
+        //let imageStore = imageView.image
+        
     }
     
     //MARK: - View life cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        dateLabel.text = dateFormatter.string(from: Date())
+        
+        //saveButton.isEnabled = false
+        
+        //nameField.delegate = self
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        nameField.text = item.name
-        serialNumberField.text = item.serialNumber
-        valueField.text = numberFormatter.string(from: NSNumber(value: item.valueInDollars))
-        dateLabel.text = dateFormatter.string(from: item.dateCreated)
+        //nameField.text = item.name
+        //serialNumberField.text = item.serialNumber
+        //valueField.text = numberFormatter.string(from: NSNumber(value: item.valueInDollars))
+        //dateLabel.text = dateFormatter.string(from: item.dateCreated)
         
         //Get the item key
-        let key = item.itemKey
+        //let key = item.itemKey
         
         //If there is an associated image with the item display it on the image view
-        let imageToDisplay = imageStore.image(forKey: key)
-        imageView.image = imageToDisplay
+        //let imageToDisplay = imageStore.image(forKey: key)
+        //imageView.image = imageToDisplay
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -143,30 +164,14 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
         view.endEditing(true)
         
         // "Save" changes to item”
-        item.name = nameField.text ?? ""
-        item.serialNumber = serialNumberField.text
+        //item.name = nameField.text ?? ""
+        //item.serialNumber = serialNumberField.text
         
-        if let valueText = valueField.text,
-            let value = numberFormatter.number(from: valueText) {
-            item.valueInDollars = value.intValue
-        } else {
-            item.valueInDollars = 0
-        }
-    }
-}
-
-// MARK: - Custon TextField
-class UICustomTextField: UITextField {
-    override func becomeFirstResponder() -> Bool {
-        let becomeFirstResponder = super.becomeFirstResponder()
-        
-        borderStyle = .line
-        return becomeFirstResponder
-    }
-    override func resignFirstResponder() -> Bool {
-        let resignFirstResponder = super.resignFirstResponder()
-        
-        borderStyle = .roundedRect
-        return resignFirstResponder
+        //if let valueText = valueField.text,
+        //    let value = numberFormatter.number(from: valueText) {
+        //    item.valueInDollars = value.intValue
+        //} else {
+        //    item.valueInDollars = 0
+        //}
     }
 }

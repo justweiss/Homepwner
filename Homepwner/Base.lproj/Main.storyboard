@@ -171,6 +171,176 @@
             </objects>
             <point key="canvasLocation" x="1176.8" y="139.880059970015"/>
         </scene>
+        <!--New Item-->
+        <scene sceneID="ujC-3Q-UpZ">
+            <objects>
+                <viewController id="EG4-IV-L3R" customClass="NewItemViewController" customModule="Homepwner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rmi-v3-B8b">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="OYn-Rl-uaU">
+                                <rect key="frame" x="8" y="72" width="359" height="543"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="MyI-0T-Tx8">
+                                        <rect key="frame" x="0.0" y="0.0" width="359" height="144"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7GY-Ij-9MG">
+                                                <rect key="frame" x="0.0" y="0.0" width="359" height="30"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CQ3-h5-cWm">
+                                                        <rect key="frame" x="0.0" y="0.0" width="45" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IqD-my-uhm" customClass="UICustomTextField" customModule="Homepwner" customModuleProvider="target">
+                                                        <rect key="frame" x="53" y="0.0" width="306" height="30"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="EG4-IV-L3R" id="Y3C-a7-3LH"/>
+                                                        </connections>
+                                                    </textField>
+                                                </subviews>
+                                                <variation key="heightClass=compact" axis="vertical"/>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Uev-TX-4c0">
+                                                <rect key="frame" x="0.0" y="38" width="359" height="30"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Serial" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1At-RJ-bT6">
+                                                        <rect key="frame" x="0.0" y="0.0" width="45" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yim-y5-gVR" customClass="UICustomTextField" customModule="Homepwner" customModuleProvider="target">
+                                                        <rect key="frame" x="53" y="0.0" width="306" height="30"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="EG4-IV-L3R" id="Jh5-58-rde"/>
+                                                        </connections>
+                                                    </textField>
+                                                </subviews>
+                                                <variation key="heightClass=compact" axis="vertical"/>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bVu-8b-Yzg">
+                                                <rect key="frame" x="0.0" y="76" width="359" height="30"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iWU-jV-iOw">
+                                                        <rect key="frame" x="0.0" y="0.0" width="45" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JOz-7s-NvZ" customClass="UICustomTextField" customModule="Homepwner" customModuleProvider="target">
+                                                        <rect key="frame" x="53" y="0.0" width="306" height="30"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="EG4-IV-L3R" id="rOw-Xq-99j"/>
+                                                        </connections>
+                                                    </textField>
+                                                </subviews>
+                                                <variation key="heightClass=compact" axis="vertical"/>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="jcA-Fn-431">
+                                                <rect key="frame" x="0.0" y="114" width="359" height="30"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Date Created" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cjd-Hz-eBd">
+                                                        <rect key="frame" x="0.0" y="0.0" width="179.5" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="izn-8O-a0h">
+                                                        <rect key="frame" x="179.5" y="0.0" width="179.5" height="30"/>
+                                                        <state key="normal" title="Change Date"/>
+                                                        <connections>
+                                                            <segue destination="OhL-20-MIR" kind="show" id="yns-Zo-yDP"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="yim-y5-gVR" firstAttribute="leading" secondItem="JOz-7s-NvZ" secondAttribute="leading" id="9dB-Ck-CZB"/>
+                                            <constraint firstItem="IqD-my-uhm" firstAttribute="leading" secondItem="yim-y5-gVR" secondAttribute="leading" id="YqY-hz-8IV"/>
+                                        </constraints>
+                                    </stackView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="248" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="Ns5-wm-7rC">
+                                        <rect key="frame" x="0.0" y="152" width="359" height="391"/>
+                                    </imageView>
+                                </subviews>
+                                <variation key="heightClass=compact" axis="horizontal" distribution="fillEqually"/>
+                            </stackView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KVf-05-oA0">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="4QM-1n-8qR"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem systemItem="camera" id="xUC-dr-I0t">
+                                        <connections>
+                                            <action selector="takePicture:" destination="EG4-IV-L3R" id="Gtp-KV-tkx"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="FtI-Jr-5jL"/>
+                                    <barButtonItem title="Remove" id="u33-7V-Xc0">
+                                        <connections>
+                                            <action selector="removePicture:" destination="EG4-IV-L3R" id="GIN-ph-Dp5"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="hL8-jv-iLD" firstAttribute="bottom" secondItem="KVf-05-oA0" secondAttribute="bottom" id="1Vi-Zs-yYU" userLabel="Bottom Layout Guide.top = Toolbar.bottom"/>
+                            <constraint firstItem="hL8-jv-iLD" firstAttribute="trailing" secondItem="KVf-05-oA0" secondAttribute="trailing" id="BgT-k5-Bfz" userLabel="trailing = Toolbar.trailing"/>
+                            <constraint firstItem="hL8-jv-iLD" firstAttribute="trailing" secondItem="OYn-Rl-uaU" secondAttribute="trailing" constant="8" id="KSk-EH-9vp" userLabel="Stack View.trailing = trailingMargin"/>
+                            <constraint firstItem="KVf-05-oA0" firstAttribute="leading" secondItem="rmi-v3-B8b" secondAttribute="leading" id="YNU-WJ-OpL"/>
+                            <constraint firstItem="OYn-Rl-uaU" firstAttribute="leading" secondItem="hL8-jv-iLD" secondAttribute="leading" constant="8" id="qB3-DN-FQ0" userLabel="Stack View.leading = leadingMargin"/>
+                            <constraint firstItem="KVf-05-oA0" firstAttribute="top" secondItem="OYn-Rl-uaU" secondAttribute="bottom" constant="8" id="wNn-Qt-0QG"/>
+                            <constraint firstItem="OYn-Rl-uaU" firstAttribute="top" secondItem="hL8-jv-iLD" secondAttribute="top" constant="8" id="yeS-B5-g18" userLabel="Stack View.top = Top Layout Guide.bottom + 8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hL8-jv-iLD"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="8GL-cW-kso" appends="YES" id="aHz-u6-FzD"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" title="New Item" id="Pxd-NQ-8OD">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ilY-HI-S8V"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="LAR-j0-muu">
+                            <connections>
+                                <segue destination="kCL-IB-zLk" kind="unwind" unwindAction="unwindToItemListWithSender:" id="Ss5-ZW-DOh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="dateLabel" destination="Cjd-Hz-eBd" id="8JK-fO-m65"/>
+                        <outlet property="imageView" destination="Ns5-wm-7rC" id="o4k-yU-GlN"/>
+                        <outlet property="nameField" destination="IqD-my-uhm" id="deY-QF-woP"/>
+                        <outlet property="saveButton" destination="LAR-j0-muu" id="Fjn-pN-2Tw"/>
+                        <outlet property="serialNumberField" destination="yim-y5-gVR" id="Isy-hw-wnd"/>
+                        <outlet property="valueField" destination="JOz-7s-NvZ" id="mas-ql-ueL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UmI-PZ-iV9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="kCL-IB-zLk" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="8GL-cW-kso">
+                    <connections>
+                        <action selector="backgroundTapped:" destination="EG4-IV-L3R" id="I9j-uV-bc5"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1015" y="860"/>
+        </scene>
         <!--Date Picker View Controller-->
         <scene sceneID="WYJ-lk-Qjv">
             <objects>
@@ -285,7 +455,7 @@
                     <navigationItem key="navigationItem" title="Homepwner" id="q3o-XY-xTK">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="qGY-6H-SKi">
                             <connections>
-                                <action selector="addNewItem:" destination="2YK-rU-QxI" id="OQb-k2-4Sf"/>
+                                <segue destination="XtM-et-kpx" kind="presentation" identifier="AddItem" id="HhE-q6-Zcf"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -312,5 +482,26 @@
             </objects>
             <point key="canvasLocation" x="-226" y="140"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ymN-rZ-Trf">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XtM-et-kpx" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tf0-mC-1CJ">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="EG4-IV-L3R" kind="relationship" relationship="rootViewController" id="ohI-3u-U0H"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QXe-SF-pIk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="284" y="860"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="yns-Zo-yDP"/>
+    </inferredMetricsTieBreakers>
 </document>
