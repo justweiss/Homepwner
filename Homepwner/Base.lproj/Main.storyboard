@@ -560,7 +560,7 @@
                                 <rect key="frame" x="157.5" y="150.5" width="60" height="30"/>
                                 <state key="normal" title="Set Date"/>
                                 <connections>
-                                    <action selector="backButton:" destination="Y5Z-HK-btY" eventType="touchUpInside" id="9l6-3P-SVO"/>
+                                    <action selector="setDate:" destination="Y5Z-HK-btY" eventType="touchUpInside" id="SjP-hA-atg"/>
                                 </connections>
                             </button>
                         </subviews>

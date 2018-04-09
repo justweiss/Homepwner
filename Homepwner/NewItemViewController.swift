@@ -204,6 +204,8 @@ class NewItemViewController: UIViewController, UITextFieldDelegate, UINavigation
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        print("view will appear \(datePickerDate)")
+        
         dateLabel.text = dateFormatter.string(from: datePickerDate)
         
         //nameField.text = item.name

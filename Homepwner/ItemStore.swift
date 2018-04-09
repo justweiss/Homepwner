@@ -70,4 +70,9 @@ class ItemStore {
         //Insert item in array at new location
         allItems.insert(movedItem, at: toIndex)
     }
+    var bedroomItems: [Item] {
+        return allItems.filter{ $0.location == "Bedroom"}
+        
+        //"Bedroom", "Bathroom", "Kitchen", "Dining Room", "Living Room", "Garage"
+    }
 }

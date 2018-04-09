@@ -207,6 +207,15 @@ class ItemsViewController: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return "Bedroom"
+        default:
+            return "Other"
+        }
+    }
+    
     //MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()

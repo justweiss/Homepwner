@@ -14,12 +14,13 @@ class NewDatePickerViewController: UIViewController {
     
     @IBOutlet var datePicker: UIDatePicker!
     
-    @IBAction func backButton(_ sender: UIButton) {
+    @IBAction func setDate(_ sender: UIButton) {
         let myVC = storyboard?.instantiateViewController(withIdentifier: "NewItem") as! NewItemViewController
-        print(myVC.datePickerDate)
+        print("first myvc date \(myVC.datePickerDate)")
+        //myVC.nameField.text = "name"
         myVC.datePickerDate = datePicker.date
-        print(datePicker.date)
-        print(myVC.datePickerDate)
+        print("datePicker.date \(datePicker.date)")
+        print("myvc after set \(myVC.datePickerDate)")
         navigationController?.popViewController(animated: true)
 
     }
