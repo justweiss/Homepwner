@@ -132,7 +132,7 @@ class NewItemViewController: UIViewController, UITextFieldDelegate, UINavigation
             let value = numberFormatter.number(from: valueText) {
             Value = value.intValue
         }
-        item = Item(name: name!, serialNumber: serialNumber, valueInDollars: Value)
+        item = Item(name: name!, serialNumber: serialNumber, valueInDollars: Value, location: "Bedroom")
         print(datePickerDate)
         //let imageStore = imageView.image
         

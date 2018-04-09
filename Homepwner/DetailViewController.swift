@@ -166,6 +166,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
         serialNumberField.text = item.serialNumber
         valueField.text = numberFormatter.string(from: NSNumber(value: item.valueInDollars))
         dateLabel.text = dateFormatter.string(from: item.dateCreated)
+        locationField.text = item.location
         
         //Get the item key
         let key = item.itemKey
@@ -191,6 +192,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
         } else {
             item.valueInDollars = 0
         }
+        item.location = locationField.text!
     }
     override func viewDidLoad() {
         super.viewDidLoad()

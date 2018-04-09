@@ -15,14 +15,16 @@ class Item: NSObject, NSCoding {
     var serialNumber: String?
     var dateCreated: Date
     let itemKey: String
+    var location: String?
     
     //is the init function to create items in the store
-    init(name: String, serialNumber: String?, valueInDollars: Int) {
+    init(name: String, serialNumber: String?, valueInDollars: Int, location: String) {
         self.name = name
         self.valueInDollars = valueInDollars
         self.serialNumber = serialNumber
         self.dateCreated = Date()
         self.itemKey = UUID().uuidString
+        self.location = location
         
         super.init()
     }
@@ -34,6 +36,7 @@ class Item: NSObject, NSCoding {
         aCoder.encode(itemKey, forKey: "itemKey")
         aCoder.encode(serialNumber, forKey: "serialNumber")
         aCoder.encode(valueInDollars, forKey: "valueInDollars")
+        aCoder.encode(location, forKey: "location")
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -42,6 +45,7 @@ class Item: NSObject, NSCoding {
         itemKey = aDecoder.decodeObject(forKey: "itemKey") as! String
         serialNumber = aDecoder.decodeObject(forKey: "serialNumber") as! String?
         valueInDollars = aDecoder.decodeInteger(forKey: "valueInDollars")
+        location = aDecoder.decodeObject(forKey: "location") as! String?
         
         super.init()
     }
