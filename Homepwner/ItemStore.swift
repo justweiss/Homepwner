@@ -71,33 +71,4 @@ class ItemStore {
         //Insert item in array at new location
         allItems.insert(movedItem, at: toIndex)
     }
-    
-    
-    var bedroomItems: [Item] {
-        return allItems.filter{ $0.location == "Bedroom"}
-
-    }
-    var bathroomItems: [Item] {
-        return allItems.filter{ $0.location == "Bathroom"}
-
-    }
-    var kitchenItems: [Item] {
-        return allItems.filter{ $0.location == "Kitchen"}
-
-    }
-    var diningRoomItems: [Item] {
-        return allItems.filter{ $0.location == "Dining Room"}
-
-    }
-    var livingRoomItems: [Item] {
-        return allItems.filter{ $0.location == "Living Room"}
-
-    }
-    var garageItems: [Item] {
-        return allItems.filter{ $0.location == "Garage"}
-    }
-    
-    var otherItems: [Item] {
-        return allItems.filter{$0.location == ""}
-    }
 }
