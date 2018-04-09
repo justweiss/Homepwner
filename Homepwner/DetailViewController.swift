@@ -18,6 +18,10 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
     @IBOutlet var valueField: UITextField!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var imageView: UIImageView!
+    @IBOutlet var locationField: UITextField!
+    
+    let locations = ["Bedroom", "Bathroom", "Kitchen", "Dining Room", "Living Room", "Garage"]
+    var selectedLocation: String?
     
     var item: Item! {
         didSet {
@@ -39,6 +43,40 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
         formatter.timeStyle = .none
         return formatter
     }()
+    
+    //MARK: - Location Selector
+    func createLocationPicker() {
+        
+        let locationPicker = UIPickerView()
+        locationPicker.delegate = self
+        
+        locationField.inputView = locationPicker
+        
+        //Customizations
+        locationPicker.backgroundColor = .black
+    }
+    
+    
+    func createToolbar() {
+        
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        
+        //Customizations
+        toolBar.barTintColor = .black
+        toolBar.tintColor = .white
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(DetailViewController.dismissKeyboard))
+        
+        toolBar.setItems([doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        
+        locationField.inputAccessoryView = toolBar
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
     
     //MARK: - Resign First Responder
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
@@ -154,6 +192,11 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
             item.valueInDollars = 0
         }
     }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        createLocationPicker()
+        createToolbar()
+    }
 }
 
 // MARK: - Custon TextField
@@ -169,5 +212,48 @@ class UICustomTextField: UITextField {
         
         borderStyle = .roundedRect
         return resignFirstResponder
+    }
+}
+
+extension DetailViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return locations.count
+    }
+    
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return locations[row]
+    }
+    
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        selectedLocation = locations[row]
+        locationField.text = selectedLocation
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        
+        var label: UILabel
+        
+        if let view = view as? UILabel {
+            label = view
+        } else {
+            label = UILabel()
+        }
+        
+        label.textColor = .white
+        label.textAlignment = .center
+        //label.font = UIFont(name: "Menlo-Regular", size: 17)
+        
+        label.text = locations[row]
+        
+        return label
     }
 }
