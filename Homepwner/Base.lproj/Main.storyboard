@@ -539,44 +539,5 @@
             </objects>
             <point key="canvasLocation" x="284" y="860"/>
         </scene>
-        <!--New Date Picker View Controller-->
-        <scene sceneID="Vba-N2-oSj">
-            <objects>
-                <viewController id="Y5Z-HK-btY" customClass="NewDatePickerViewController" customModule="Homepwner" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="IdA-ws-hjL">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="mfo-eC-0tU">
-                                <rect key="frame" x="27.5" y="225.5" width="320" height="216"/>
-                                <date key="date" timeIntervalSinceReferenceDate="543967458.954934">
-                                    <!--2018-03-28 22:04:18 +0000-->
-                                </date>
-                            </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F21-Cw-4sl" userLabel="Set Date">
-                                <rect key="frame" x="157.5" y="150.5" width="60" height="30"/>
-                                <state key="normal" title="Set Date"/>
-                                <connections>
-                                    <action selector="setDate:" destination="Y5Z-HK-btY" eventType="touchUpInside" id="SjP-hA-atg"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="mfo-eC-0tU" firstAttribute="centerX" secondItem="IdA-ws-hjL" secondAttribute="centerX" id="AVa-bK-o3w"/>
-                            <constraint firstItem="F21-Cw-4sl" firstAttribute="centerX" secondItem="IdA-ws-hjL" secondAttribute="centerX" id="eaB-as-60e"/>
-                            <constraint firstItem="mfo-eC-0tU" firstAttribute="top" secondItem="F21-Cw-4sl" secondAttribute="bottom" constant="45" id="jr9-Vs-bdi"/>
-                            <constraint firstItem="mfo-eC-0tU" firstAttribute="centerY" secondItem="IdA-ws-hjL" secondAttribute="centerY" id="jv6-9K-blx"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="WAw-me-3MI"/>
-                    </view>
-                    <connections>
-                        <outlet property="datePicker" destination="mfo-eC-0tU" id="Tq0-3K-Pa8"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gNC-Rb-gQg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1885.5999999999999" y="859.52023988005999"/>
-        </scene>
     </scenes>
 </document>
