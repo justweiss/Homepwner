@@ -21,6 +21,10 @@ class NewItemViewController: UIViewController, UITextFieldDelegate, UINavigation
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var saveButton: UIBarButtonItem!
+    @IBOutlet var locationField: UITextField!
+    
+    let locations = ["Bedroom", "Bathroom", "Kitchen", "Dining Room", "Living Room", "Garage"]
+    var selectedLocation: String?
     
     let numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -36,6 +40,40 @@ class NewItemViewController: UIViewController, UITextFieldDelegate, UINavigation
         formatter.timeStyle = .none
         return formatter
     }()
+    
+    //MARK: - Location Selector
+    func createLocationPicker() {
+        
+        let locationPicker = UIPickerView()
+        locationPicker.delegate = self
+        
+        locationField.inputView = locationPicker
+        
+        //Customizations
+        locationPicker.backgroundColor = .black
+    }
+    
+    
+    func createToolbar() {
+        
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        
+        //Customizations
+        toolBar.barTintColor = .black
+        toolBar.tintColor = .white
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(DetailViewController.dismissKeyboard))
+        
+        toolBar.setItems([doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        
+        locationField.inputAccessoryView = toolBar
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
@@ -156,6 +194,9 @@ class NewItemViewController: UIViewController, UITextFieldDelegate, UINavigation
         
         saveButton.isEnabled = false
         
+        createLocationPicker()
+        createToolbar()
+        
         //nameField.delegate = self
     }
     
@@ -195,3 +236,47 @@ class NewItemViewController: UIViewController, UITextFieldDelegate, UINavigation
         //}
     }
 }
+
+extension NewItemViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return locations.count
+    }
+    
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return locations[row]
+    }
+    
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        selectedLocation = locations[row]
+        locationField.text = selectedLocation
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        
+        var label: UILabel
+        
+        if let view = view as? UILabel {
+            label = view
+        } else {
+            label = UILabel()
+        }
+        
+        label.textColor = .white
+        label.textAlignment = .center
+        //label.font = UIFont(name: "Menlo-Regular", size: 17)
+        
+        label.text = locations[row]
+        
+        return label
+    }
+}
+

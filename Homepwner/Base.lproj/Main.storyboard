@@ -202,7 +202,7 @@
                                 <rect key="frame" x="8" y="72" width="359" height="543"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="MyI-0T-Tx8">
-                                        <rect key="frame" x="0.0" y="0.0" width="359" height="144"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="359" height="182"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7GY-Ij-9MG">
                                                 <rect key="frame" x="0.0" y="0.0" width="359" height="30"/>
@@ -267,8 +267,26 @@
                                                 </subviews>
                                                 <variation key="heightClass=compact" axis="vertical"/>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="jcA-Fn-431">
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="yHB-tL-enV">
                                                 <rect key="frame" x="0.0" y="114" width="359" height="30"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yqu-bN-KBM">
+                                                        <rect key="frame" x="0.0" y="0.0" width="65.5" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sd7-fW-nbN">
+                                                        <rect key="frame" x="73.5" y="0.0" width="285.5" height="30"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                                <variation key="heightClass=compact" axis="horizontal"/>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="jcA-Fn-431">
+                                                <rect key="frame" x="0.0" y="152" width="359" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Date Created" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cjd-Hz-eBd">
                                                         <rect key="frame" x="0.0" y="0.0" width="179.5" height="30"/>
@@ -292,7 +310,7 @@
                                         </constraints>
                                     </stackView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="248" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="Ns5-wm-7rC">
-                                        <rect key="frame" x="0.0" y="152" width="359" height="391"/>
+                                        <rect key="frame" x="0.0" y="190" width="359" height="353"/>
                                     </imageView>
                                 </subviews>
                                 <variation key="heightClass=compact" axis="horizontal" distribution="fillEqually"/>
@@ -348,6 +366,7 @@
                     <connections>
                         <outlet property="dateLabel" destination="Cjd-Hz-eBd" id="8JK-fO-m65"/>
                         <outlet property="imageView" destination="Ns5-wm-7rC" id="o4k-yU-GlN"/>
+                        <outlet property="locationField" destination="sd7-fW-nbN" id="HQd-hU-zSM"/>
                         <outlet property="nameField" destination="IqD-my-uhm" id="deY-QF-woP"/>
                         <outlet property="saveButton" destination="LAR-j0-muu" id="Fjn-pN-2Tw"/>
                         <outlet property="serialNumberField" destination="yim-y5-gVR" id="Isy-hw-wnd"/>
