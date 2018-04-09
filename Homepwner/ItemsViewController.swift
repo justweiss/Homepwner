@@ -19,6 +19,11 @@ class ItemsViewController: UITableViewController {
         
         navigationItem.leftBarButtonItem = editButtonItem
     }
+    //MARK: - Sections
+    enum TableSection: Int {
+        case Bathroom = 0, Bedroom, DiningRoom, Garage, Kitchen, LivingRoom
+    }
+    
     
     //MARK: - Actions
     @IBAction func unwindToItemList(sender: UIStoryboardSegue) {
@@ -90,14 +95,14 @@ class ItemsViewController: UITableViewController {
     // add a section for the "No more items!" cell
     // override UITableViewDataSource protocol
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 7 //CHANGE NUMBER
     } // end numberOfSections(in:)
     
     //Returns the number of items in the itemStore array
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return itemStore.allItems.count
         
-        /*switch section {
+        switch section {
         case 0:
             return itemStore.bedroomItems.count
         case 1:
@@ -112,9 +117,9 @@ class ItemsViewController: UITableViewController {
             return itemStore.garageItems.count
         default:
             return itemStore.otherItems.count+1
-        }*/
+        }
         
-        if section == 0 {
+        /*if section == 0 {
             return itemStore.allItems.count
         } // end if
         else if section == 1 {    // section == 1 for the row that says "No more items!"
@@ -123,7 +128,7 @@ class ItemsViewController: UITableViewController {
         else {
             print("More than 2 sections!!!")
            return 0
-        } // ene else
+        } // ene else*/
     }
     
     //Creates the cells in the tableview
@@ -131,7 +136,19 @@ class ItemsViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell
         
-        /*let items: [Item]
+        if let tableSection = TableSection(rawValue: indexPath.section) {
+            let item = itemStore.allItems[indexPath.row]
+            
+            if let nameLabel = cell.viewWithTag(10) as? UILabel {
+                nameLabel.text = item.name
+            }
+            if let valueLabel = cell.viewWithTag(20) as? UILabel {
+                valueLabel.text = "$\(item.valueInDollars)"
+            }
+        }
+        return cell
+        
+        let items: [Item]
         
         switch indexPath.section {
         case 0:
@@ -148,9 +165,9 @@ class ItemsViewController: UITableViewController {
             items =  itemStore.garageItems
         default:
             items =  itemStore.otherItems
-        }*/
+        }
         
-        if indexPath.section == 0 {
+        /*if indexPath.section == 0 {
             // Set the text on the cell with the description of the
             // item that is at the nth index of items, where
             // n = row this cell will appear in on the tableview
@@ -182,7 +199,7 @@ class ItemsViewController: UITableViewController {
     
         }
         
-        return cell
+        return cell*/
     }
     
     //Function the detects and deletes cells
@@ -242,7 +259,7 @@ class ItemsViewController: UITableViewController {
             return IndexPath(row: itemStore.allItems.count - 1, section: 0)
         }
     }
-    /*
+    
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
@@ -260,7 +277,7 @@ class ItemsViewController: UITableViewController {
         default:
             return "Other"
         }
-    }*/
+    }
     
     //override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     //    if indexPath.section == 1 && indexPath.row == itemStore.otherItems.count {

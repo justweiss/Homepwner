@@ -9,6 +9,7 @@
 import UIKit
 
 class ItemStore {
+    
     //Create the item store
     var allItems = [Item]()
     
@@ -71,7 +72,7 @@ class ItemStore {
         allItems.insert(movedItem, at: toIndex)
     }
     
-    /*
+    
     var bedroomItems: [Item] {
         return allItems.filter{ $0.location == "Bedroom"}
 
@@ -98,5 +99,5 @@ class ItemStore {
     
     var otherItems: [Item] {
         return allItems.filter{$0.location == ""}
-    }*/
+    }
 }
