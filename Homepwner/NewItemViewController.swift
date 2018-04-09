@@ -22,6 +22,7 @@ class NewItemViewController: UIViewController, UITextFieldDelegate, UINavigation
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var saveButton: UIBarButtonItem!
     @IBOutlet var locationField: UITextField!
+    @IBOutlet var dateTextField: UITextField!
     
     let locations = ["Bedroom", "Bathroom", "Kitchen", "Dining Room", "Living Room", "Garage"]
     var selectedLocation: String?
@@ -187,18 +188,35 @@ class NewItemViewController: UIViewController, UITextFieldDelegate, UINavigation
         }
     }
     
+    @objc func datePickerValueChanged(sender: UIDatePicker) {
+
+        datePickerDate = sender.date
+        dateTextField.text = dateFormatter.string(from: sender.date)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        view.endEditing(true)
+    }
+    
     //MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        dateLabel.text = dateFormatter.string(from: datePickerDate)
+        //dateLabel.text = dateFormatter.string(from: datePickerDate)
         
         saveButton.isEnabled = false
         
         createLocationPicker()
         createToolbar()
         
-        //nameField.delegate = self
+        let datePicker = UIDatePicker()
+        
+        datePicker.datePickerMode = UIDatePickerMode.date
+        
+        datePicker.addTarget(self, action: #selector(NewItemViewController.datePickerValueChanged(sender:)), for: UIControlEvents.valueChanged)
+        
+        dateTextField.inputView = datePicker
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -206,7 +224,7 @@ class NewItemViewController: UIViewController, UITextFieldDelegate, UINavigation
         
         print("view will appear \(datePickerDate)")
         
-        dateLabel.text = dateFormatter.string(from: datePickerDate)
+        dateTextField.text = dateFormatter.string(from: datePickerDate)
         
         //nameField.text = item.name
         //serialNumberField.text = item.serialNumber

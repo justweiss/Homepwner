@@ -288,18 +288,15 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="jcA-Fn-431">
                                                 <rect key="frame" x="0.0" y="152" width="359" height="30"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Date Created" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cjd-Hz-eBd">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KjL-qJ-90P">
                                                         <rect key="frame" x="0.0" y="0.0" width="179.5" height="30"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="izn-8O-a0h">
                                                         <rect key="frame" x="179.5" y="0.0" width="179.5" height="30"/>
                                                         <state key="normal" title="Change Date"/>
-                                                        <connections>
-                                                            <segue destination="Y5Z-HK-btY" kind="show" id="cGy-Vp-FXC"/>
-                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -364,7 +361,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="dateLabel" destination="Cjd-Hz-eBd" id="8JK-fO-m65"/>
+                        <outlet property="dateTextField" destination="KjL-qJ-90P" id="hbF-xd-H6w"/>
                         <outlet property="imageView" destination="Ns5-wm-7rC" id="o4k-yU-GlN"/>
                         <outlet property="locationField" destination="sd7-fW-nbN" id="HQd-hU-zSM"/>
                         <outlet property="nameField" destination="IqD-my-uhm" id="deY-QF-woP"/>
