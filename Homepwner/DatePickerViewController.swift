@@ -18,7 +18,7 @@ class DatePickerViewController: UIViewController {
         super.viewWillAppear(animated)
         
         // set the initial date to item's date created
-        //datePicker.setDate(item.dateCreated, animated: true)
+        datePicker.setDate(item.dateCreated, animated: true)
         
     }
     

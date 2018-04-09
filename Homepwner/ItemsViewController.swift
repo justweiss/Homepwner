@@ -22,6 +22,7 @@ class ItemsViewController: UITableViewController {
     
     
     //MARK: - Actions
+    //when save it clicked in new item then it calls this function to get the data
     @IBAction func unwindToItemList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? NewItemViewController, let item = sourceViewController.item {
             

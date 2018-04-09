@@ -18,7 +18,6 @@ class NewItemViewController: UIViewController, UITextFieldDelegate, UINavigation
     @IBOutlet var nameField: UITextField!
     @IBOutlet var serialNumberField: UITextField!
     @IBOutlet var valueField: UITextField!
-    @IBOutlet var dateLabel: UILabel!
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var saveButton: UIBarButtonItem!
     @IBOutlet var locationField: UITextField!
@@ -100,6 +99,7 @@ class NewItemViewController: UIViewController, UITextFieldDelegate, UINavigation
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             imagePicker.sourceType = .camera
             
+            //Adds cross hair to camera
             let crossHair = UIButton(type: .contactAdd)
             crossHair.tintColor = UIColor.white
             crossHair.translatesAutoresizingMaskIntoConstraints = false
@@ -123,9 +123,6 @@ class NewItemViewController: UIViewController, UITextFieldDelegate, UINavigation
         //Get picked image from info dictionary
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         
-        //Store the image in the ImageStore for the item's key
-        //imageStore.setImage(image, forKey: item.itemKey)
-        
         //Put that image on the screen in the image view
         imageView.image = image
         
@@ -136,9 +133,6 @@ class NewItemViewController: UIViewController, UITextFieldDelegate, UINavigation
     //MARK: - Remove Picture
     @IBAction func removePicture(_ sender: UIBarButtonItem) {
         
-        //Deletes the image from the imageStore
-        //imageStore.deleteImage(forKey: item.itemKey)
-        
         //Removes the image from the screen
         imageView.image = nil
         
@@ -147,23 +141,13 @@ class NewItemViewController: UIViewController, UITextFieldDelegate, UINavigation
     //MARK: - Changed Date ViewController
     // override UIViewController method
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //If the triggered segue is the "ShowItem" segue
-        // note that it all seems to work without this identifier check
-        if segue.identifier == "NewItemDate" {
-            print("NewItemDate")
-            
-            // take advantage of DetailViewController's item
-            // which is was obtained from ItemViewController
-            // in ItemViewController's implementation of prepare(for:_:)
-            //let datePickerViewController = segue.destination as! DatePickerViewController
-            //datePickerViewController.datePicker = dateLabel
-            
-        }
+        //Checks to see if savebutton was click
         guard let button = sender as? UIBarButtonItem, button === saveButton else {
             print("Cancel")
             return
         }
         
+        //If save was click then prepares date to be sent to Items view controller
         let name = nameField.text
         let serialNumber = serialNumberField.text
         let location = locationField.text
@@ -174,13 +158,12 @@ class NewItemViewController: UIViewController, UITextFieldDelegate, UINavigation
         }
         item = Item(name: name!, serialNumber: serialNumber, valueInDollars: Value, location: location!)
         print(datePickerDate)
-        //let imageStore = imageView.image
-        
-        //DatePickerViewController.datePicker
         
     }
     
+    //Looks to see if name field and value field are empty
     func textFieldDidEndEditing(_ textField: UITextField) {
+        //If empty save remains blocked out
         if nameField.text == "" || valueField.text == "" {
             saveButton.isEnabled = false
         } else {
@@ -188,6 +171,7 @@ class NewItemViewController: UIViewController, UITextFieldDelegate, UINavigation
         }
     }
     
+    //Checks if date picker is changed
     @objc func datePickerValueChanged(sender: UIDatePicker) {
 
         datePickerDate = sender.date
@@ -203,40 +187,29 @@ class NewItemViewController: UIViewController, UITextFieldDelegate, UINavigation
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //dateLabel.text = dateFormatter.string(from: datePickerDate)
-        
+        //Makes save button invisable
         saveButton.isEnabled = false
         
+        //Creates location picker
         createLocationPicker()
         createToolbar()
         
+        //Creates Date picker
         let datePicker = UIDatePicker()
         
+        //Sets the date to the create date
         datePicker.datePickerMode = UIDatePickerMode.date
         
+        //Looks to change in date picker date
         datePicker.addTarget(self, action: #selector(NewItemViewController.datePickerValueChanged(sender:)), for: UIControlEvents.valueChanged)
-        
         dateTextField.inputView = datePicker
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        print("view will appear \(datePickerDate)")
-        
+        //Updates date when user returns to screen
         dateTextField.text = dateFormatter.string(from: datePickerDate)
-        
-        //nameField.text = item.name
-        //serialNumberField.text = item.serialNumber
-        //valueField.text = numberFormatter.string(from: NSNumber(value: item.valueInDollars))
-        //dateLabel.text = dateFormatter.string(from: item.dateCreated)
-        
-        //Get the item key
-        //let key = item.itemKey
-        
-        //If there is an associated image with the item display it on the image view
-        //let imageToDisplay = imageStore.image(forKey: key)
-        //imageView.image = imageToDisplay
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -244,36 +217,24 @@ class NewItemViewController: UIViewController, UITextFieldDelegate, UINavigation
         
         //Clear first responder
         view.endEditing(true)
-        
-        // "Save" changes to item”
-        //item.name = nameField.text ?? ""
-        //item.serialNumber = serialNumberField.text
-        
-        //if let valueText = valueField.text,
-        //    let value = numberFormatter.number(from: valueText) {
-        //    item.valueInDollars = value.intValue
-        //} else {
-        //    item.valueInDollars = 0
-        //}
     }
 }
 
+//Creates location picker
 extension NewItemViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
+    //Sets and adds all information for location picker
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-    
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return locations.count
     }
     
-    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return locations[row]
     }
-    
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
@@ -293,7 +254,6 @@ extension NewItemViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         
         label.textColor = .white
         label.textAlignment = .center
-        //label.font = UIFont(name: "Menlo-Regular", size: 17)
         
         label.text = locations[row]
         

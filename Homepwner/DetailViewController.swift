@@ -56,7 +56,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
         locationPicker.backgroundColor = .black
     }
     
-    
+    //Creates toolbar for location picker
     func createToolbar() {
         
         let toolBar = UIToolbar()
